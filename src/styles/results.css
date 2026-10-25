@@ -1,0 +1,124 @@
+/* Simulator results column (metric cards, persona lens, charts, plain sentences) — owned by sim-results (wave 2): only overrides and new classes for its components; loaded after rail.css. */
+
+/* ---------- metric card: plain sentence → range → chart → first comparison → "Lisää" ---------- */
+.mcard__plain { font-size: var(--step-0); line-height: 1.45; color: var(--ink); margin: 2px 0 0; }
+.mcard__value { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 10px; font-size: var(--step-1); }
+.mcard__value .mcard__range { font-weight: 600; }
+.mcard__value .mcard__typ { font-size: var(--step--1); font-weight: 400; color: var(--ink-2); letter-spacing: 0; }
+.mcard__value .mcard__typ:empty { display: none; }
+.mcard__when:empty { display: none; }
+.mcard__head { flex-wrap: wrap; row-gap: 0; }
+.mcard__head .mcard__when { margin-left: auto; text-align: right; justify-content: flex-end; }
+.mcard__comp1 { font-size: var(--step--1); line-height: 1.4; color: var(--ink); padding-left: 16px; position: relative; }
+.mcard__comp1::before { content: "≈"; position: absolute; left: 0; color: var(--ink-3); font-weight: 700; }
+.mcard__full { font-size: var(--step--2); color: var(--ink-2); font-weight: 600; margin-top: 2px; }
+.mcard__full + .mcard__comp1 { margin-top: -2px; }
+
+/* "Lisää": everything else, closed by default */
+.mcard__more { border-top: 1px solid var(--line); padding-top: 6px; margin-top: 2px; }
+.mcard__more > summary { cursor: pointer; font-size: var(--step--1); font-weight: 600; color: var(--ink-2); min-height: 32px; display: flex; align-items: center; gap: 6px; list-style: none; }
+.mcard__more > summary::-webkit-details-marker { display: none; }
+.mcard__more > summary::before { content: "+"; display: inline-grid; place-items: center; width: 18px; height: 18px; border-radius: 50%; border: 1px solid var(--line-strong); font-size: 13px; line-height: 1; color: var(--ink-2); }
+.mcard__more[open] > summary::before { content: "−"; }
+.mcard__more > summary:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; border-radius: 4px; }
+.mcard__more[open] { display: grid; gap: 8px; }
+.mcard__notes { font-size: var(--step--2); color: var(--ink-2); line-height: 1.45; }
+.mcard__actual { background: var(--surface-2); }
+.mcard__actualh { font-weight: 600; color: var(--ink-2); font-size: var(--step--2); text-transform: uppercase; letter-spacing: 0.04em; }
+.mcard__actual .source { flex-basis: 100%; font-size: var(--step--2); }
+
+/* a real project's own figure as the headline, our generic calculation below it */
+.mcard__declabel { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; font-size: var(--step--1); font-weight: 600; color: var(--ink-2); }
+.mcard__src { font-size: var(--step--2); }
+.mcard__generic { font-size: var(--step--1); color: var(--ink-2); line-height: 1.5; }
+.mcard__generic > .chip { vertical-align: middle; margin-right: 6px; }
+.mcard__generic > span:last-child { color: var(--ink); font-weight: 600; white-space: nowrap; }
+.mcard__diff { font-size: var(--step--1); color: var(--ink-2); line-height: 1.4; }
+.mcard__diff strong { color: var(--ink); }
+.mcard__generic-inline { display: block; color: var(--ink-2); font-size: var(--step--2); }
+.mcard__comps .source, .mcard__comp1 .source { font-size: var(--step--2); }
+.mcard__comp1 .chip, .mcard__comps .chip { vertical-align: middle; }
+
+@media (min-width: 900px) {
+  .mcard__value { font-size: var(--step-2); }
+}
+
+/* ---------- band chart as a year slider ---------- */
+.bc[role="slider"]:focus-visible { outline: 3px solid var(--focus); outline-offset: 4px; }
+
+/* ---------- range strip: optional grow-in ---------- */
+.strip--animate .strip__band { transition: left 600ms cubic-bezier(.2, .7, .2, 1), width 600ms cubic-bezier(.2, .7, .2, 1); }
+@media (prefers-reduced-motion: reduce) { .strip--animate .strip__band { transition: none; } }
+
+/* ---------- Why drawer ---------- */
+.why-now__declared { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 6px; font-size: var(--step--1); padding-bottom: 6px; margin-bottom: 4px; border-bottom: 1px solid var(--line); }
+.why-plain { font-size: var(--step-0); line-height: 1.5; }
+.why-sec__pinnote { font-size: var(--step--2); }
+.why-coef__sources > summary { cursor: pointer; font-size: var(--step--1); font-weight: 600; color: var(--ink-2); min-height: 32px; display: inline-flex; align-items: center; }
+.why-coef__sources > summary:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; border-radius: 4px; }
+.why-coef__srclist { display: grid; gap: 6px; padding-top: 4px; }
+
+/* ---------- your view: have your say ---------- */
+.sim-view__say { border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); padding: 0 var(--space-4); }
+.sim-view__say > summary { cursor: pointer; display: flex; align-items: center; gap: 8px; min-height: 44px; font-weight: 600; }
+.sim-view__say > summary:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; border-radius: 4px; }
+.sim-view__say[open] { padding-bottom: var(--space-4); }
+.sim-view__saylead { color: var(--ink-2); margin-bottom: 8px; }
+.sim-view__saysteps { margin: 0; padding-left: 1.4em; display: grid; gap: 10px; }
+.sim-view__saysteps li p { margin: 2px 0; }
+.sim-view__saysteps .source { font-size: var(--step--2); }
+
+/* ---------- range strip on narrow widths: short labels, every other tick ---------- */
+.strip { container-type: inline-size; }
+.strip__ts { display: none; }
+@container (max-width: 440px) {
+  .strip__tick .strip__tl { display: none; }
+  .strip__tick .strip__ts { display: inline; }
+  .strip__tick.is-alt { display: none; }
+}
+
+/* ---------- assumptions of a real project (top of the results column) ---------- */
+.chip--assumed { background: var(--surface-3); color: var(--ink); border: 1px dashed var(--ink-3); }
+.mcard__head .chip--assumed { flex: none; }
+.sim-assume { display: grid; gap: 6px; padding: 12px 14px; border-radius: var(--radius-sm); background: var(--surface-2); border: 1px dashed var(--ink-3); color: var(--ink); font-size: var(--step--1); line-height: 1.45; }
+.sim-assume[hidden] { display: none; }
+.sim-assume__head { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; font-size: var(--step-0); }
+.sim-assume__note { color: var(--ink-2); }
+.sim-assume__sizes { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; }
+.sim-assume__sizes > span { color: var(--ink-2); }
+
+/* ---------- noise: the other guidelines, and the noise at a persona's home ---------- */
+.mcard__guides { margin: 0; padding-left: 1.1em; display: grid; gap: 3px; font-size: var(--step--1); line-height: 1.4; color: var(--ink); }
+.mcard__guides[hidden] { display: none; }
+.mcard__guides li::marker { color: var(--ink-3); }
+.mcard__persona { display: flex; gap: 8px; align-items: flex-start; padding: 8px 10px; border-radius: var(--radius-sm); background: var(--k-opinion-soft); color: var(--ink); font-size: var(--step--1); line-height: 1.45; }
+.mcard__persona > svg { flex: none; margin-top: 2px; color: var(--k-opinion); }
+.mcard__persona strong { font-weight: 600; }
+
+/* persona voices with their trust label */
+.sim-persona__voices li p > .chip { vertical-align: middle; margin-right: 2px; }
+
+/* Why drawer: what the range means */
+.why-now__range { color: var(--ink-2); font-size: var(--step--2); line-height: 1.45; }
+
+/* glossary words inside the big range number keep its size */
+.mcard__range .term { font-weight: inherit; }
+.sim-assume__sizes .btn[aria-pressed="true"] { background: var(--accent-soft); border-color: var(--accent); color: var(--ink); }
+
+/* ---------- "Suurimmat yllätykset": after the run, the biggest town-scale comparisons ---------- */
+.sim-surprise { display: grid; gap: 10px; padding: 14px 16px; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--line-strong); box-shadow: inset 4px 0 0 var(--accent); }
+.sim-surprise[hidden] { display: none; }
+.sim-surprise__title { display: flex; align-items: center; gap: 8px; font-size: var(--step-1); margin: 0; }
+.sim-surprise__list { margin: 0; padding: 0; list-style: none; display: grid; gap: 12px; counter-reset: surprise; }
+.sim-surprise__list li { display: grid; gap: 2px; padding-left: 30px; position: relative; counter-increment: surprise; }
+.sim-surprise__list li::before { content: counter(surprise); position: absolute; left: 0; top: 2px; width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; background: var(--accent-soft); color: var(--ink); font-weight: 700; font-size: var(--step--2); }
+.sim-surprise__metric { font-size: var(--step--2); font-weight: 600; color: var(--ink-2); text-transform: uppercase; letter-spacing: 0.04em; }
+.sim-surprise__text { font-size: var(--step-0); line-height: 1.35; color: var(--ink); }
+.sim-surprise__big { display: inline; font-family: var(--font-display); font-size: var(--step-3, 1.9rem); line-height: 1.1; font-weight: 700; color: var(--ink); }
+.sim-surprise__foot { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; font-size: var(--step--2); color: var(--ink-2); }
+
+/* persona drop-down (one control instead of a row of chips) */
+.sim-pselect { width: 100%; max-width: 22rem; }
+/* "Miksi?" reads as a quiet link, so a column of cards is not a column of buttons */
+.mcard__why.btn { border-color: transparent; background: transparent; box-shadow: none; color: var(--accent); padding-inline: 4px; text-decoration: underline; text-underline-offset: 3px; }
+.mcard__why.btn:hover { background: var(--accent-soft); }

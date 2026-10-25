@@ -1,0 +1,49 @@
+/* Simulator left rail (town card, design choices, guesses) — owned by sim-rail (wave 2): only overrides and new classes for its components; loaded after sim.css. */
+
+/* ---------- town card: "a real project in this town" ---------- */
+.rail-realproj { display: grid; gap: 8px; padding: 10px 12px; border-radius: var(--radius-sm); background: var(--accent-soft); border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--line)); }
+.rail-realproj[hidden] { display: none; }
+.rail-realproj__text { margin: 0; font-size: var(--step--1); color: var(--ink); line-height: 1.45; }
+.rail-realproj__list { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.rail-realproj__list li { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 6px 10px; font-size: var(--step--1); line-height: 1.4; }
+.rail-realproj__list li > span { flex: 1 1 12rem; min-width: 0; }
+.rail-realproj__btn { justify-self: start; }
+
+/* ---------- preset panel: neutral frame (not the "reported" colour), compact fact lines ---------- */
+.sim-preset.rail-preset { gap: 8px; border-color: var(--line-strong); background: var(--surface); grid-template-columns: minmax(0, 1fr); }
+.rail-preset__body, .rail-facts, .rail-fact { grid-template-columns: minmax(0, 1fr); }
+.rail-preset__top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 4px 8px; }
+.rail-preset__top .sim-preset__label { margin: 0; }
+.rail-preset__clear { min-height: 36px; padding: 0 10px; margin-right: -6px; }
+.rail-preset__size, .rail-preset__status { font-size: var(--step--1); color: var(--ink-2); margin: 4px 0 0; line-height: 1.45; }
+.rail-preset__status { color: var(--ink); font-weight: 600; }
+.rail-preset__assumed { margin-top: 4px; font-size: var(--step--1); color: var(--ink-2); line-height: 1.45; }
+.rail-preset__assumed > summary { cursor: pointer; list-style: none; }
+.rail-preset__assumed > summary::-webkit-details-marker { display: none; }
+.rail-preset__assumed:not([open]) > summary { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; line-clamp: 2; overflow: hidden; }
+.rail-preset__assumed:not([open]) > summary:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.rail-preset__body { display: grid; gap: 6px; padding-top: 8px; border-top: 1px solid var(--line); }
+.rail-preset__heading { font-size: var(--step-0); margin: 0; }
+.rail-preset__lead { margin: 0; font-size: var(--step--2); color: var(--ink-3); line-height: 1.4; }
+.rail-facts { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.rail-fact { display: grid; gap: 2px; min-width: 0; }
+.rail-fact__meta { display: flex; align-items: center; gap: 6px; min-width: 0; font-size: var(--step--2); color: var(--ink-3); }
+.rail-fact__meta .chip { flex: none; }
+.rail-fact__src { position: relative; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.rail-fact__src a { color: inherit; }
+.rail-fact__claim { margin: 0; font-size: var(--step--1); line-height: 1.45; color: var(--ink); display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; line-clamp: 2; overflow: hidden; }
+.rail-preset__body.is-expanded .rail-fact__claim, .rail-preset__more .rail-fact__claim { display: block; -webkit-line-clamp: unset; line-clamp: none; overflow: visible; }
+.rail-preset__body.is-expanded .rail-fact__src, .rail-preset__more .rail-fact__src { white-space: normal; overflow-wrap: anywhere; }
+.rail-preset__more { display: grid; gap: 8px; }
+.rail-preset__more > summary { cursor: pointer; font-weight: 600; min-height: 40px; display: flex; align-items: center; color: var(--accent); }
+.rail-preset__more .sim-preset__summary { margin: 0; }
+
+/* ---------- design: exact size slider ---------- */
+.rail-size__range { width: 100%; accent-color: var(--accent); }
+.rail-size .sim-seg { margin-top: 4px; }
+
+/* ---------- guesses: reveal in place ---------- */
+.sim-guessfb__near { margin: 0; font-size: var(--step--1); color: var(--ink-2); }
+.rail-guess__context { margin: 6px 0 0; font-size: var(--step--1); color: var(--ink-2); line-height: 1.45; }
+.sim-guess__actions .rail-guess__run { min-height: 52px; padding: 0 22px; font-size: var(--step-0); flex: 1 1 100%; }
+.sim-guess__actions .rail-guess__run .icon { width: 20px; height: 20px; }

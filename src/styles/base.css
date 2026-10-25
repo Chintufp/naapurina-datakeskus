@@ -1,0 +1,119 @@
+/* Base styles shared by every view (owned by the scaffold). View-specific styles go in pages.css / sim.css / scene.css. */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: var(--step-0);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--surface); }
+img, svg, canvas { max-width: 100%; }
+h1, h2, h3, h4 { font-family: var(--font-display); line-height: 1.15; margin: 0; text-wrap: balance; letter-spacing: -0.01em; }
+h1 { font-size: clamp(var(--step-4), 6vw, var(--step-5)); font-weight: 700; }
+h2 { font-size: clamp(var(--step-2), 3.4vw, var(--step-3)); font-weight: 700; }
+h3 { font-size: var(--step-1); font-weight: 600; }
+h4 { font-size: var(--step-0); font-weight: 600; }
+p { margin: 0; }
+p + p { margin-top: 0.75em; }
+a { color: var(--accent); text-underline-offset: 2px; }
+a:hover { color: var(--accent-hover); }
+button, input, select, textarea { font: inherit; color: inherit; }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; border-radius: 4px; }
+.num, .tabular { font-variant-numeric: tabular-nums; }
+.eyebrow { font-family: var(--font-display); font-size: var(--step--1); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); }
+.lead { font-size: var(--step-1); color: var(--ink-2); max-width: 62ch; }
+.muted { color: var(--ink-3); }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
+/* page frame */
+.skip-link { position: absolute; left: 8px; top: -60px; z-index: 100; background: var(--accent); color: var(--accent-ink); padding: 8px 12px; border-radius: var(--radius-sm); }
+.skip-link:focus { top: calc(8px + env(safe-area-inset-top, 0px)); }
+.site-header { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: var(--surface); border-bottom: 1px solid var(--line); }
+.site-header__inner { max-width: var(--maxw); margin: 0 auto; padding-left: var(--gutter-l); padding-right: var(--gutter-r); padding-block: 10px; display: flex; align-items: center; gap: var(--space-4); flex-wrap: wrap; }
+.brand { font-family: var(--font-display); font-weight: 700; font-size: var(--step-1); color: var(--ink); text-decoration: none; margin-right: auto; }
+.site-nav { display: flex; gap: var(--space-1); flex-wrap: wrap; }
+.site-nav__link { color: var(--ink-2); text-decoration: none; padding: 6px 10px; border-radius: var(--radius-sm); font-weight: 500; }
+.site-nav__link:hover { background: var(--surface-2); color: var(--ink); }
+.site-nav__link.is-active { background: var(--accent-soft); color: var(--ink); }
+.site-main { display: block; min-height: 60vh; }
+.site-main:focus { outline: none; }
+.container, .page { max-width: var(--maxw); margin: 0 auto; padding-left: var(--gutter-l); padding-right: var(--gutter-r); padding-block: var(--space-6); }
+.site-footer { border-top: 1px solid var(--line); background: var(--surface); margin-top: var(--space-7); }
+.site-footer__inner { max-width: var(--maxw); margin: 0 auto; padding-left: var(--gutter-l); padding-right: var(--gutter-r); padding-block: var(--space-5); font-size: var(--step--1); color: var(--ink-3); }
+
+/* buttons */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 0 18px; border-radius: var(--radius-sm); border: 1px solid var(--line-strong); background: var(--surface); color: var(--ink); font-weight: 600; cursor: pointer; text-decoration: none; transition: background 0.15s, border-color 0.15s; }
+.btn:hover { background: var(--surface-2); color: var(--ink); }
+.btn--primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.btn--primary:hover { background: var(--accent-hover); border-color: var(--accent-hover); color: var(--accent-ink); }
+.btn--ghost { background: transparent; border-color: transparent; }
+.btn--ghost:hover { background: var(--surface-2); }
+.btn--small { min-height: 34px; padding: 0 12px; font-size: var(--step--1); }
+.btn[disabled], .btn[aria-disabled="true"] { opacity: 0.5; cursor: not-allowed; }
+.icon { flex: none; vertical-align: middle; }
+
+/* segmented control: a radiogroup of buttons */
+.seg { display: inline-flex; flex-wrap: wrap; gap: 4px; padding: 4px; background: var(--surface-2); border-radius: var(--radius); }
+.seg__opt { border: 0; background: transparent; padding: 8px 12px; min-height: 40px; border-radius: var(--radius-sm); cursor: pointer; font-weight: 500; color: var(--ink-2); }
+.seg__opt[aria-checked="true"] { background: var(--surface); color: var(--ink); box-shadow: var(--shadow); font-weight: 600; }
+.seg__opt[disabled] { opacity: 0.45; cursor: not-allowed; }
+
+/* range input */
+input[type="range"] { width: 100%; accent-color: var(--accent); min-height: 32px; }
+
+/* panels */
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: var(--space-5); }
+
+/* chips (trust labels) */
+.chip { display: inline-flex; align-items: center; gap: 5px; font-size: var(--step--2); font-weight: 600; line-height: 1; padding: 5px 8px; border-radius: 999px; background: var(--surface-2); color: var(--ink-2); white-space: nowrap; }
+.chip--measured { background: var(--k-measured-soft); color: var(--k-measured); }
+.chip--estimate { background: var(--k-estimate-soft); color: var(--k-estimate); }
+.chip--calculated { background: var(--k-calculated-soft); color: var(--k-calculated); }
+.chip--opinion { background: var(--k-opinion-soft); color: var(--k-opinion); }
+.conf-dots { display: inline-flex; gap: 2px; }
+.conf-dots .dot { width: 6px; height: 6px; border-radius: 50%; border: 1px solid currentColor; }
+.conf-dots .dot--on { background: currentColor; }
+.chip--src { background: transparent; border: 1px solid var(--line-strong); color: var(--ink-3); font-weight: 500; }
+
+/* sources & fact cards */
+.source { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; font-size: var(--step--1); color: var(--ink-3); }
+.source__name { font-weight: 600; }
+.fact-card { display: grid; gap: var(--space-2); background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: var(--space-4); min-width: 0; }
+.fact-card__labels { display: flex; flex-wrap: wrap; gap: 6px; }
+.fact-card__value { font-family: var(--font-display); font-size: var(--step-2); font-weight: 700; font-variant-numeric: tabular-nums; }
+.fact-card__claim { color: var(--ink); }
+.fact-card__note { font-size: var(--step--1); color: var(--ink-3); }
+.fact-card__source { padding-top: var(--space-2); border-top: 1px dashed var(--line); }
+
+/* drawer (used by "Why?" and term explanations) */
+.drawer-backdrop { position: fixed; inset: 0; background: rgb(8 18 22 / 0.45); z-index: 40; }
+.drawer { position: fixed; top: 0; right: 0; bottom: 0; width: min(520px, 100%); background: var(--surface); z-index: 41; box-shadow: var(--shadow-lg); display: flex; flex-direction: column; padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); padding-right: env(safe-area-inset-right, 0px); }
+.drawer__head { display: flex; align-items: flex-start; gap: var(--space-3); padding: var(--space-4) var(--space-5); border-bottom: 1px solid var(--line); }
+.drawer__body { overflow-y: auto; padding: var(--space-5); display: grid; gap: var(--space-4); }
+
+/* plain-language term (glossary) */
+.term { border-bottom: 1px dotted var(--ink-3); cursor: help; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
+}
+
+/* Forced colours (Windows contrast themes): backgrounds and shadows are dropped there, so selected states,
+   trust chips and focus rings get outlines, underlines and borders in system colours instead. */
+@media (forced-colors: active) {
+  :focus-visible { outline: 2px solid Highlight; outline-offset: 2px; }
+  .seg__opt[aria-checked="true"], [role="radio"][aria-checked="true"], [aria-pressed="true"] {
+    outline: 2px solid Highlight; outline-offset: -2px; text-decoration: underline 2px; text-underline-offset: 3px;
+  }
+  .seg__opt[aria-checked="true"]:focus-visible, [role="radio"][aria-checked="true"]:focus-visible, [aria-pressed="true"]:focus-visible { outline-offset: 2px; }
+  [aria-current="page"], [aria-current="step"], [aria-current="true"] { text-decoration: underline 2px; text-underline-offset: 4px; }
+  .chip { border: 1px solid CanvasText; }
+  .chip--src { border-color: GrayText; }
+  .conf-dots .dot { border-color: CanvasText; }
+  .conf-dots .dot--on { forced-color-adjust: none; background: CanvasText; }
+  .btn--primary { border: 2px solid ButtonText; }
+}

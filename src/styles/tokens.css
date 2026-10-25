@@ -1,0 +1,195 @@
+/* Layout concept: a planning workbench — choices rail | stage (living town scene + timeline) | results column; stacks to one column on phones.
+   Palette: cool "snow in shade" neutrals biased toward pine ink; Baltic blue for interaction; heat amber as the second voice.
+   Theme hues encode identity (energy, heat, water…), never good/bad. Trust labels (reported / estimate / calculated / viewpoint) always carry an icon + word. */
+:root {
+  --bg: #F3F6F7;
+  --surface: #FFFFFF;
+  --surface-2: #E9EFF1;
+  --surface-3: #DCE5E8;
+  --ink: #12262D;
+  --ink-2: #3D555E;
+  --ink-3: #506870;            /* ≥ 4.5:1 on --bg, --surface, --surface-2 and --surface-3 */
+  --line: #CFDBDF;
+  --line-strong: #A6B9BF;
+
+  --accent: #1B5E8C;
+  --accent-hover: #164E75;
+  --accent-ink: #FFFFFF;
+  --accent-soft: #DCEAF4;
+  --heat: #B8601A;
+  --heat-soft: #F8E6D6;
+  --focus: #1B5E8C;
+
+  /* data identity hues — one per theme */
+  --c-energy: #2F6BC4;
+  --c-heat: #C4651A;
+  --c-water: #12808F;
+  --c-land: #5F7F2E;
+  --c-jobs: #7A4FB0;
+  --c-traffic: #66747D;
+  --c-safety: #A2456B;
+  --c-future: #3E6E66;
+
+  /* uncertainty band (drawn behind the typical line) */
+  --band-strong: rgb(27 94 140 / 0.28);
+  --band-soft: rgb(27 94 140 / 0.12);
+
+  /* trust labels */
+  --k-measured: #1D6A84;
+  --k-measured-soft: #DDEFF4;
+  --k-calculated: #845511;
+  --k-calculated-soft: #F6EAD5;
+  --k-opinion: #66479B;
+  --k-opinion-soft: #ECE5F6;
+  --k-estimate: #42507F;       /* slate: someone's forecast or plan; distinct from teal, amber and purple */
+  --k-estimate-soft: #E4E7F3;
+
+  /* scene palette (read by the town scene via getComputedStyle) */
+  --sky-top: #CFE3EE;
+  --sky-bottom: #EEF4F6;
+  --ground: #DCE6DE;
+  --snow: #F7FAFB;
+  --forest: #3F6B4A;
+  --forest-dark: #2C4F37;
+  --field: #CDBF7A;
+  --house-red: #A33B2B;
+  --house-white: #F2EFE8;
+  --building: #5C6B73;
+  --window-warm: #F2B84B;
+
+  --font-display: "Familjen Grotesk", "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+  --font-body: "Work Sans", "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+
+  --step--2: 0.8125rem;        /* 13px: chips and small print, the smallest text in the app */
+  --step--1: 0.9375rem;        /* 15px: secondary text */
+  --step-0: 1rem;
+  --step-1: 1.1875rem;
+  --step-2: 1.4375rem;
+  --step-3: 1.875rem;
+  --step-4: 2.5rem;
+  --step-5: 3.25rem;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 72px;
+
+  --radius: 10px;
+  --radius-sm: 6px;
+  --shadow: 0 1px 2px rgb(18 38 45 / 0.06), 0 6px 20px rgb(18 38 45 / 0.07);
+  --shadow-lg: 0 10px 40px rgb(18 38 45 / 0.18);
+  --maxw: 1240px;
+  --gutter-l: max(16px, env(safe-area-inset-left, 0px));
+  --gutter-r: max(16px, env(safe-area-inset-right, 0px));
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0D171B;
+    --surface: #13232A;
+    --surface-2: #1A2E36;
+    --surface-3: #223943;
+    --ink: #E4EDEF;
+    --ink-2: #AFC1C7;
+    --ink-3: #8DA2AA;
+    --line: #29404A;
+    --line-strong: #3E5966;
+    --accent: #7DB6E4;
+    --accent-hover: #A2CBEC;
+    --accent-ink: #0D171B;
+    --accent-soft: #1C3A50;
+    --heat: #F0A05A;
+    --heat-soft: #3D2A1A;
+    --focus: #A2CBEC;
+    --c-energy: #7AA7EA;
+    --c-heat: #F0A05A;
+    --c-water: #4FC0CC;
+    --c-land: #A3C06A;
+    --c-jobs: #B596E6;
+    --c-traffic: #A3B3BB;
+    --c-safety: #E58BAE;
+    --c-future: #86C2B6;
+    --band-strong: rgb(125 182 228 / 0.30);
+    --band-soft: rgb(125 182 228 / 0.13);
+    --k-measured: #8BCFE3;
+    --k-measured-soft: #173742;
+    --k-calculated: #E9BE7A;
+    --k-calculated-soft: #3A2C14;
+    --k-opinion: #C9B3F2;
+    --k-opinion-soft: #2E2445;
+    --k-estimate: #B7C0E6;
+    --k-estimate-soft: #252B45;
+    --sky-top: #0B1C2B;
+    --sky-bottom: #1B3242;
+    --ground: #1E2D2A;
+    --snow: #C9D6DC;
+    --forest: #2E5238;
+    --forest-dark: #1D3826;
+    --field: #6E6438;
+    --house-red: #7E2E22;
+    --house-white: #B9B4AA;
+    --building: #44525A;
+    --window-warm: #FFC861;
+    --shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 6px 20px rgb(0 0 0 / 0.25);
+    --shadow-lg: 0 10px 40px rgb(0 0 0 / 0.5);
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #0D171B;
+  --surface: #13232A;
+  --surface-2: #1A2E36;
+  --surface-3: #223943;
+  --ink: #E4EDEF;
+  --ink-2: #AFC1C7;
+  --ink-3: #8DA2AA;
+  --line: #29404A;
+  --line-strong: #3E5966;
+  --accent: #7DB6E4;
+  --accent-hover: #A2CBEC;
+  --accent-ink: #0D171B;
+  --accent-soft: #1C3A50;
+  --heat: #F0A05A;
+  --heat-soft: #3D2A1A;
+  --focus: #A2CBEC;
+  --c-energy: #7AA7EA;
+  --c-heat: #F0A05A;
+  --c-water: #4FC0CC;
+  --c-land: #A3C06A;
+  --c-jobs: #B596E6;
+  --c-traffic: #A3B3BB;
+  --c-safety: #E58BAE;
+  --c-future: #86C2B6;
+  --band-strong: rgb(125 182 228 / 0.30);
+  --band-soft: rgb(125 182 228 / 0.13);
+  --k-measured: #8BCFE3;
+  --k-measured-soft: #173742;
+  --k-calculated: #E9BE7A;
+  --k-calculated-soft: #3A2C14;
+  --k-opinion: #C9B3F2;
+  --k-opinion-soft: #2E2445;
+  --k-estimate: #B7C0E6;
+  --k-estimate-soft: #252B45;
+  --sky-top: #0B1C2B;
+  --sky-bottom: #1B3242;
+  --ground: #1E2D2A;
+  --snow: #C9D6DC;
+  --forest: #2E5238;
+  --forest-dark: #1D3826;
+  --field: #6E6438;
+  --house-red: #7E2E22;
+  --house-white: #B9B4AA;
+  --building: #44525A;
+  --window-warm: #FFC861;
+  --shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 6px 20px rgb(0 0 0 / 0.25);
+  --shadow-lg: 0 10px 40px rgb(0 0 0 / 0.5);
+  color-scheme: dark;
+}
+
+/* Larger text: store.textSize "large" sets <html data-text-size="large"> (main.js); every rem-based size scales with it. */
+html[data-text-size="large"] { font-size: 112.5%; }
