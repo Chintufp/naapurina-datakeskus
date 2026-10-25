@@ -9,7 +9,7 @@
 const listeners = new Set();
 
 const DEFAULT_STATE = {
-  lang: 'fi',                // 'fi' | 'en'
+  lang: 'en',                // 'fi' | 'en'
   view: 'koti',              // route token: koti | simulaattori | aiheet | lahteet | suomi | menetelma
   townCode: '837',           // Statistics Finland municipality code (837 = Tampere)
   presetId: null,            // id from content/projects.js when a real project preset is loaded

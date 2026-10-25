@@ -13,7 +13,7 @@ The user picks their own municipality (real data for all 308 Finnish municipalit
 
 Core insight to make visible: the impacts depend on the town. A 50 MW data centre's waste heat can exceed a small town's whole district-heat demand but is a fraction of a city's; 25 permanent jobs mean more in a small town with high unemployment than in Tampere.
 
-Audience: ordinary Finns of any age with no technical background, on phones and laptops. Secondary: Despro staff showing it on a projector at a residents' evening. Primary language **Finnish**, full **English** toggle.
+Audience: ordinary Finns of any age with no technical background, on phones and laptops. Secondary: Despro staff showing it on a projector at a residents' evening. All text in **Finnish** and **English**; the site opens in English, with a **FI / EN** switch.
 
 ## 2. Non-negotiable principles (balance and reliability)
 

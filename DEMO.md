@@ -19,9 +19,9 @@ Finland has about 40 data centres running, 14 under construction and about 130 p
 - Test the projector: open the simulator and press **F** (presentation mode). The town scene should fill the screen.
 - Live site: https://chintufp.github.io/naapurina-datakeskus/ (jurors can open it on their phones).
 - Have the real-project link ready: https://chintufp.github.io/naapurina-datakeskus/#hanke-jarvenpaa-dc
-- Language: Finnish by default; **FI / EN** switch at the top right.
+- Language: English by default; **FI / EN** switch at the top right.
 - On a laptop the simulator is three columns that each scroll on their own: steps 1–3 on the left, the town picture in the middle, results and step 5 on the right. Scroll with the mouse over the column you mean, or click a step at the top.
-- Video backup: if the live demo fails, play `pitch/demo-video-fi.mp4` (or `-en`) from the project folder. The slides are in the pitch deck link in `pitch/README.md`.
+- Video backup: if the live demo fails, play `pitch/demo-video-en.mp4` from the project folder (the Finnish one is in `pitch/finnish/`). The slides are in the pitch deck link in `pitch/README.md`.
 - Roles: one person talks, one person clicks, one person leads Q&A.
 
 ## The 3-minute demo
